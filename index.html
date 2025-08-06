@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Wish for Kuhu</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #ffe6f7 0%, #f9c6e0 100%);
+            min-height: 100vh;
+            font-family: 'Segoe Script', 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            color: #4d194d;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated floating hearts */
+        .heart {
+            position: absolute;
+            width: 80px;
+            height: 40px;
+            background: #f27e88;
+            overflow: hidden;
+            font-size: 10px;
+            left: 80%;
+            top: 80%;
+            transform: translate(-50%, -50%) scale(4);
+            clip-path: polygon(
+            50% 0%,
+            100% 35%,
+            80% 100%,
+            50% 80%,
+            20% 100%,
+            0% 35%
+            );
+            opacity: 0.9;
+            animation: floatHearts 6s linear infinite;
+        }
+        .heart:nth-child(1) { left: 20%; animation-delay: 0s; background: #ffb6d5;}
+        .heart:nth-child(2) { left: 40%; animation-delay: 2s; background: #fb61ae;}
+        .heart:nth-child(3) { left: 60%; animation-delay: 4s; background: #ffb6d5;}
+        .heart:nth-child(4) { left: 80%; animation-delay: 1s; background: #ff69b4;}
+        .heart:nth-child(5) { left: 30%; animation-delay: 3s; background: #ffb6d5;}
+        .heart:nth-child(6) { left: 70%; animation-delay: 5s; background: #ff69b4;}
+
+        @keyframes floatHearts {
+            0% {
+            top: 100%;
+            opacity: 0.7;
+            transform: translate(-50%, 0) scale(1) rotate(0deg);
+            }
+            50% {
+            opacity: 1;
+            transform: translate(-50%, -50px) scale(1.2) rotate(10deg);
+            }
+            100% {
+            top: 0%;
+            opacity: 0;
+            transform: translate(-50%, -200px) scale(0.3) rotate(-50deg);
+            }
+        }
+        .gift-box {
+            width: 200px;
+            height: 200px;
+            background-color: #ff00c34e; /* Yellow gift box */
+            margin: 100px auto;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .gift-box:before {
+            content: "Open Your Gift";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .card {
+            display: none;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            margin: 20px auto;
+            width: 50vw;
+            height: 70vh;
+            overflow: auto;
+            
+        }
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 1s ease;
+        }
+
+        .button:hover{
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="heart">Happy Birthday</div>
+
+<div class="gift-box" onclick="openGift()"></div>
+
+<div id="wishCard" class="card">
+    <p>Happy Birthday Kuhu! Yours is a day to shine, sparkle, and feel deeply loved. Happy birthday to an extraordinary girl whose smile lights up every room and whose kindness warms every heart. You inspire others with your confidence, compassion, and creativity. On this special day, I wish you endless laughter, beautiful surprises, and dreams fulfilled. May you be surrounded by people who cherish you, and may your heart overflow with joy. Your presence makes the world brighter. Today, celebrate yourself as the beautiful, strong, and unique person you are. Here's to a magical year ahead filled with hope, adventure, and endless love.
+        As a good friend, I love you, bro. Thank you for being such a wonderful friend. I always have a great time with you it always feels amazing. Please promise me you'll stay my close friend like this for a lifetime. <br>
+        <h3>I  Love You🙂</h3>
+
+</p>
+    <button class="button" onclick="nextCard('yes')">Yes☺️</button>
+    <button class="button" onclick="nextCard('no')">No😤</button>
+</div>
+
+<div id="responseCardYes" class="card">
+    <p>I knew it!</p>
+    <p style="font-size: 24px; font-weight: bold;">Happy Birthday Kuhu!</p>
+</div>
+
+<div id="responseCardNo" class="card">
+    <p>😢 mai itni buri hu kya , sorry agar meri koi baat buri lagi ho to 😖.</p>
+    <p style="font-size: 24px; font-weight: bold;">Happy Birthday Kuhu!</p>
+</div>
+
+<script>
+    function openGift() {
+        const giftBox = document.querySelector('.gift-box');
+        giftBox.style.transition = 'transform 0.6s cubic-bezier(.68,-0.55,.27,1.55), opacity 0.4s';
+        giftBox.style.transform = 'scale(1.2) rotate(10deg)';
+        giftBox.style.opacity = '0';
+        setTimeout(() => {
+            giftBox.style.display = 'none';
+            const wishCard = document.getElementById('wishCard');
+            wishCard.style.display = 'block';
+            wishCard.style.opacity = '0';
+            wishCard.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                wishCard.style.transition = 'opacity 0.6s, transform 0.6s';
+                wishCard.style.opacity = '1';
+                wishCard.style.transform = 'scale(1)';
+            }, 50);
+            sendEmail("Gift opened");
+        }, 600);
+    }
+
+    function nextCard(response) {
+        const wishCard = document.getElementById('wishCard');
+        wishCard.style.transition = 'opacity 0.5s, transform 0.5s';
+        wishCard.style.opacity = '0';
+        wishCard.style.transform = 'scale(0.8)';
+        setTimeout(() => {
+            wishCard.style.display = 'none';
+            let cardToShow;
+            if (response === 'yes') {
+                cardToShow = document.getElementById('responseCardYes');
+                sendEmail("Response: Yes");
+            } else {
+                cardToShow = document.getElementById('responseCardNo');
+                sendEmail("Response: No");
+            }
+            cardToShow.style.display = 'block';
+            cardToShow.style.opacity = '0';
+            cardToShow.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                cardToShow.style.transition = 'opacity 0.6s, transform 0.6s';
+                cardToShow.style.opacity = '1';
+                cardToShow.style.transform = 'scale(1)';
+            }, 50);
+        }, 500);
+    }
+
+    function sendEmail(message) {
+        // This is a placeholder for sending an email.
+        // You would need a backend service to actually send an email.
+        console.log("Email sent to neelambujtiwari13@gmail.com with message: " + message);
+    }
+
+    window.addEventListener('resize', function() {
+        adjustLayout();
+    });
+
+    function adjustLayout() {
+        const giftBox = document.querySelector('.gift-box');
+        const cards = document.querySelectorAll('.card');
+        if (window.innerWidth < 500) {
+            if (giftBox) {
+                giftBox.style.width = '120px';
+                giftBox.style.height = '120px';
+                giftBox.style.margin = '40px auto';
+            }
+            cards.forEach(card => {
+                card.style.width = '90vw';
+                card.style.padding = '10px';
+                card.style.fontSize = '14px';
+            });
+        } else {
+            if (giftBox) {
+                giftBox.style.width = '200px';
+                giftBox.style.height = '200px';
+                giftBox.style.margin = '100px auto';
+            }
+            cards.forEach(card => {
+                card.style.width = '300px';
+                card.style.padding = '20px';
+                card.style.fontSize = '16px';
+            });
+        }
+    }
+
+    // Initial layout adjustment
+    adjustLayout();
+</script>
+
+</body>
+</html>
